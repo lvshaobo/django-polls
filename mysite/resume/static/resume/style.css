@@ -1,0 +1,18 @@
+a {
+    color: pink;
+}
+
+li {
+    color: pink;
+}
+
+.center {
+    position: relative;
+    margin: 15% 40%;
+}
+
+.right {
+    position: absolute;
+    top: 300px;
+    left: 1500px;
+}

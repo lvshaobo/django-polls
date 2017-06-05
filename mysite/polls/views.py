@@ -7,6 +7,7 @@ from django.template import loader
 from django.urls import reverse
 from django.views import generic
 from .models import Question, Choice
+from myself.settings import LOGIN_URL
 
 
 def vote(request, question_id):
@@ -44,16 +45,20 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
-"""
 def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    template = loader.get_template('polls/index.html')
-    context = {
-        'latest_question_list': latest_question_list,
-    }
-    return HttpResponse(template.render(context, request))
+    if 'user' in request.session:
+        print('user already exists')
+        latest_question_list = Question.objects.order_by('-pub_date')[:5]
+        template = loader.get_template('polls/index.html')
+        context = {
+            'latest_question_list': latest_question_list,
+            'username': request.session['user'],
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect(LOGIN_URL)
 
-
+"""
 def detail(request, question_id):
     try:
         question = Question.objects.get(pk=question_id)

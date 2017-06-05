@@ -1,0 +1,15 @@
+<title>Welcome On Board</title>
+<p>Welcome On Board</p>
+
+<p>All registered users</p>
+{% if user_list %}
+    <ul>
+        {% for user in user_list %}
+            <li>{{ user.username }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <li>No usernames</li>
+{% endif %}
+
+<a href="{% url 'resume:index' %}">Resume</a>

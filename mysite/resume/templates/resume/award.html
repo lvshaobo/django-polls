@@ -1,0 +1,24 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'resume/style.css' %}" />
+
+<a href='{% url 'resume:index' %}'>My Resume</a><br/>
+
+<a href='{% url 'resume:award' %}'>My Award</a><br/>
+
+<a href='{% url 'resume:index-template-view' %}'>IndexTemplateView</a>
+
+{% if basic_information_list %}
+    <ul>
+        {% for basic_information in basic_information_list %}
+            <li>{{ basic_information.education }}</li>
+            <ul type="disc">
+                {% for award in basic_information.award_set.all %}
+                    <li>{{ award.name }}, {{ award.time }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    <ul>
+{% else %}
+    <li>No resumes are available</li>
+{% endif %}

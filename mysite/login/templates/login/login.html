@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'login/general.css' %}"/>
+
+<title>Welcome On Board</title>
+<body>
+    <div class="center">
+        <p>Welcome On Board</p>
+        <form method = 'post' enctype="multipart/form-data">
+            {% csrf_token %}  
+            {{uf.as_p}}
+            <input type="submit" value = "Board" />
+        </form>
+    <a href="{% url 'login:register' %}">Register</a>
+    </div>
+{# <input type="hidden" name="next" value="/resume/" /> #}
+</body>

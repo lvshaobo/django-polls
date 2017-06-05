@@ -1,0 +1,21 @@
+{% load static %}
+
+{% comment%}
+<link rel="stylesheet" type="text/css" href="{% static 'login/register.css' %}"/>
+{% endcomment%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'login/register.css' %}"/>
+
+<title>Register</title>
+<body>
+    <div class="center">
+        <p>Register</p>
+        <form method = 'post' enctype="multipart/form-data">
+            {% csrf_token %}  
+            {{uf.as_p}}
+            <input type="submit" value = "ok" />
+        </form>
+
+        <a href='{% url 'login:login_home' %}'>Login</a>
+    </div>
+</body>

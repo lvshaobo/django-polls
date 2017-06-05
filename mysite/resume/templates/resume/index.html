@@ -1,0 +1,25 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'resume/style.css' %}"/> 
+
+<body>
+    <div class="right">
+        <a> {{username}} </a><br/>
+        <a href='{% url 'polls:index' %}'>Polls</a><br/>
+    </div>
+    <div class="center">
+        <img src= "{% static "resume/images/RedHat.png" %}" alt="My image"/><br/>
+        <a href='{% url 'resume:index' %}'>My Resume</a><br/>
+        <a href='{% url 'resume:award' %}'>My Award</a><br/>
+        <a href='{% url 'resume:index-template-view' %}'>IndexTemplateView</a>
+        {% if basic_information_list %}
+            <ul>
+                {% for basic_information in basic_information_list %}
+                    <li>{{ basic_information.education }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <li>No basic information are available</li>
+        {% endif %}
+    </div>
+</body>

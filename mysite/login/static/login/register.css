@@ -1,0 +1,11 @@
+a {
+    color: pink;
+}
+
+.center {
+    /*border: 2px solid;*/
+    text-align: center;
+    position: relative;
+    margin: 250px auto auto auto;
+}
+
